@@ -1,9 +1,8 @@
-# Toureiro
+# Abelheiro
 
-[![npm version](https://badge.fury.io/js/toureiro.svg)](https://badge.fury.io/js/toureiro)
-[![Build Status](https://travis-ci.org/Epharmix/Toureiro.svg?branch=master)](https://travis-ci.org/Epharmix/Toureiro)
+This is a fork of [Toureiro](https://github.com/Epharmix/Toureiro) adapted to work for bee-queue!
 
-A graphical monitoring interface for the distributed job queue [bull](https://github.com/OptimalBits/bull) built using `express` and `react`. Toureiro provides simple monitoring features as well as the ability to promote delayed jobs directly.
+A graphical monitoring interface for the distributed job queue [bee-queue](https://github.com/LewisJEllis/bee-queue) built using `express` and `react`. Abelheiro provides simple monitoring features as well as the ability to promote delayed jobs directly.
 
 ## Screenshots
 
@@ -25,7 +24,7 @@ You can then use `toureiro` in your project. The constructor `toureiro()` will r
 var toureiro = require('toureiro');
 var app = toureiro();
 var server = app.listen(3000, function() {
-  console.log('Toureiro is now listening at port 3000...');
+  console.log('Abelheiro is now listening at port 3000...');
 });
 ```
 
@@ -48,7 +47,7 @@ You can also run `toureiro` as a standalone program:
 
 ```bash
 > toureiro
-Toureiro is now listening at port 3000...
+Abelheiro is now listening at port 3000...
 ```
 
 ## Config
@@ -92,16 +91,6 @@ Options:
 `npm test`: Runs the mocha tests
 
 Any issues reporting or pull requests are welcomed!
-
-## Why Bull?
-
-Distributed task queue is a necessity in a lot of use cases. Among all the queues out there, [Celery](http://www.celeryproject.org/) is probably the most prominent and has the biggest community. However, it's hard to integrate `Celery` into the Node.js programs, simply because that's another language environment to maintain. Therefore, a javascript native task queue is much needed.
-
-Among the queues written for `javascript`, [Kue](https://github.com/Automattic/kue.git) is the most widely used one. `Kue` is a great library, and we have relied heavily on `Kue` before, but we are gradually troubled by the various bugs of the library. Due to the time when `Kue` was first written, a lot of things weren't possible (for example, atomicity of complex `redis` operations, which is now enabled by the built-in `LUA` scripting engine). What's more, several important features (FIFO behavior of delayed jobs, for instance) are missing from `Kue` or are hard to implement due to the early design decisions.
-
-Then `bull` came along. It's written by the guys from OptimalBits and its APIs are modeled heavily after those of `Kue`. In its core, however, it's written very carefully (and differently from `Kue`) to ensure robustness and atomicity. Bugs that are common to distributed queue designs are not found with `bull` or have been fixed along the way.
-
-As awesome as `bull` is, the only thing that is missing is a web monitoring interface, much like that of `Kue`, so we decided to make our own, thus `toureiro` is born.
 
 ## Browser Compatibility
 
